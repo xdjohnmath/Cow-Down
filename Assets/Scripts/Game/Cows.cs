@@ -47,13 +47,6 @@ public class Cows : MonoBehaviour {
 		}
 	}
 
-	private void SoundRandom () {
-		int random = Random.Range (1, 2);
-		if (random == 1) {
-		} else {
-		}
-	}
-
 	//Falling Types
 	void Falling	  (){
 		
@@ -91,7 +84,7 @@ public class Cows : MonoBehaviour {
 
 	// Para definir a posição de reuso das vacas que caíram.
 	void Position (){
-		SoundRandom ();
+
 		if (fallType == 1) {													// Descida padrão
 			positiony = 6;
 			transform.position = new Vector2 (positionx, positiony);

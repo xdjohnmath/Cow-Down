@@ -15,7 +15,6 @@ public class SelectionGuide : MonoBehaviour {
 	public float 			timeToStart;
 	public Text  			levelPause;
 	public Text  			levelWin;
-	public Text  			levelLose;
 
 	public Text 			prefs;
 	public int 				pref;
@@ -48,7 +47,6 @@ public class SelectionGuide : MonoBehaviour {
 
 		levelPause.text = ("Level " + level);
 		levelWin.text 	= ("Level " + level);
-		levelLose.text 	= ("Level " + level);
 
 		// Mostra o nível do player
 		pref = PlayerPrefs.GetInt ("levelPlayer");
