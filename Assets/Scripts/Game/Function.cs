@@ -77,11 +77,12 @@ public class Function : MonoBehaviour {
 	}
 
 	public void SelToMenu (){
-		StartMenu.animRoll = 3;
+		GameObject soundObject = GameObject.Find ("Sound");
+		Destroy (soundObject);
+		PlayerPrefs.SetInt ("tomenu", 1);
 		SceneManager.LoadScene ("StartMenu");
 	}
-
-
+		
 	public void Sound () {
 		isMuted = !isMuted;
 

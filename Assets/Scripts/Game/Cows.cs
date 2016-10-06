@@ -27,10 +27,13 @@ public class Cows : MonoBehaviour {
 
 	public 	float 		timeToSound;
 
+	private CircleCollider2D col;
+
 	void Start () {
-		height = GetComponent<SpriteRenderer> ().bounds.size.y;
+		height 	= GetComponent <SpriteRenderer> ().bounds.size.y;
 		transform.position = new Vector2 (positionx, positiony);
 
+		col 	= GetComponent <CircleCollider2D> ();             // Para desativar a colisão das vacas x confete
 	}
 
 	void Update () {
@@ -46,6 +49,16 @@ public class Cows : MonoBehaviour {
 			sleepCow = false;
 		}
 	}
+
+	void OnTriggerEnter2D (Collider2D other) {
+		
+		if (other.CompareTag ("Confete")){
+			col.enabled = false;
+		}
+
+	}
+
+
 
 	//Falling Types
 	void Falling	  (){
@@ -84,7 +97,7 @@ public class Cows : MonoBehaviour {
 
 	// Para definir a posição de reuso das vacas que caíram.
 	void Position (){
-
+		col.enabled = true;			// Para desativar a colisão das vacas x confete
 		if (fallType == 1) {													// Descida padrão
 			positiony = 6;
 			transform.position = new Vector2 (positionx, positiony);

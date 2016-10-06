@@ -10,21 +10,26 @@ public class StartMenu : MonoBehaviour {
 	public 	GameObject 	credit;
 	public	GameObject	exit;
 	public	GameObject	panel;
-	public static int 	animRoll;
+	public 	static int 	animRoll;
+
+	public 	AudioSource	audioSourceMenu;
 
 	public 	bool 		isMuted = false;
 
-
 	void Start () {
 		anim	= GetComponent	<Animator> ();
+
 	}
 	
 	void Update () {
 		StartCoroutine (ChangeAnim ());
 		if (PlayerPrefs.GetInt ("tomenu") == 1) {
 			anim.SetInteger ("Change", 3);
+			if (!audioSourceMenu.isPlaying){
+				audioSourceMenu.Play ();
+			}
 		}
-
+				
 		if (isMuted) {
 			AudioListener.volume = 0.0f;
 		} else {
@@ -34,17 +39,9 @@ public class StartMenu : MonoBehaviour {
 	}
 
 	IEnumerator ChangeAnim(){
-		yield return new WaitForSeconds (2.35f);
+		yield return new WaitForSeconds (0f);
 		PlayerPrefs.SetInt ("tomenu",0);
 	}
-
-	//  Order
-
-	//  . Canvas
-	//  . Scene2
-	//  . Scene2.5
-	//  . Scene3
-
 
 	public void ChangeScene() { // to scene 2
 		animRoll = 1;
@@ -59,6 +56,7 @@ public class StartMenu : MonoBehaviour {
 	public void TouchedScene() { // to scene 3
 		animRoll = 3;
 		anim.SetInteger ("Change", animRoll);
+	
 	}
 
 	public void Play () {
@@ -68,7 +66,7 @@ public class StartMenu : MonoBehaviour {
 	public IEnumerator LoadingPlay(){
 		animRoll = 4;
 		anim.SetInteger ("Change", animRoll);
-		yield return new WaitForSeconds (2.0f);
+		yield return new WaitForSeconds (2.35f);
 		SceneManager.LoadScene ("Instructions");
 
 	}

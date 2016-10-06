@@ -8,9 +8,11 @@ public class MilkHUD : MonoBehaviour {
 
 	public static bool correct = false;
 
+	public		ParticleSystem newMilk;
 
 	void Start () {
 		anim = GetComponent<Animator> ();
+		newMilk.Stop ();
 	}
 	
 	void Update () {
@@ -37,5 +39,4 @@ public class MilkHUD : MonoBehaviour {
 			correct = false;
 		}
 	}
-
 }

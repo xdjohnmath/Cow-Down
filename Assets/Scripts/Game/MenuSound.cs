@@ -8,8 +8,12 @@ public class MenuSound : MonoBehaviour {
 
 
 	void Awake(){
-		StartCoroutine (MenuMusic ());
-		DontDestroyOnLoad (this);
+		if (PlayerPrefs.GetInt ("tomenu") == 0) {
+			StartCoroutine (MenuMusic ());
+			DontDestroyOnLoad (this);
+		}else {
+			DontDestroyOnLoad (this);
+		}
 	}
 
 	IEnumerator MenuMusic() {

@@ -6,9 +6,12 @@ public class MilkColision : MonoBehaviour {
 	private Animator 	anim;
 	public 	AudioSource	sound;
 
+	public 	ParticleSystem newMilkP;
+
 	void Start () {
-		anim = GetComponent		<Animator> ();
-		sound = GetComponent 	<AudioSource> ();
+		anim 	 = GetComponent	<Animator> ();
+		sound 	 = GetComponent <AudioSource> ();
+
 		anim.SetBool ("Active", false);
 	}
 
@@ -22,7 +25,9 @@ public class MilkColision : MonoBehaviour {
 			anim.SetBool ("Active", true);
 			sound.Play ();
 		}
-
-
 	}
+	public void PlayPS () {
+		newMilkP.Play ();
+	}
+
 }
