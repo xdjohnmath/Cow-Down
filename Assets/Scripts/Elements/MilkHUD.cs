@@ -21,13 +21,13 @@ public class MilkHUD : MonoBehaviour {
 
 		if (transition == 1) {
 			correct = false;
-			anim.SetInteger ("Milk", 1);
+			StartCoroutine (milk1 ());
 		} else if (transition == 2) {
 			correct = false;
-			anim.SetInteger ("Milk", 2);
+			StartCoroutine (milk2 ());
 		} else if (transition == 3) {
 			correct = false;
-			anim.SetInteger ("Milk", 3);
+			StartCoroutine (milk3 ());;
 		} else if (transition == 0) {
 			anim.SetInteger ("Milk", 0);
 		}
@@ -38,5 +38,21 @@ public class MilkHUD : MonoBehaviour {
 		} else {
 			correct = false;
 		}
+
 	}
+
+	IEnumerator milk1(){
+		yield return new WaitForSeconds (1.5f);
+		anim.SetInteger ("Milk", 1);
+	}
+	IEnumerator milk2(){
+		yield return new WaitForSeconds (1.5f);
+		anim.SetInteger ("Milk", 2);
+	}
+	IEnumerator milk3(){
+		yield return new WaitForSeconds (1.5f);
+		anim.SetInteger ("Milk", 3);
+	}
+
+
 }

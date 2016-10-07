@@ -13,6 +13,10 @@ public class CowsCredits : MonoBehaviour {
 		posJ = joao.position.y;
 		posI = igor.position.y;
 		posA = adriel.position.y;
+
+		joao.position   = new Vector2 (Random.Range (-7, 7), posJ);
+		igor.position   = new Vector2 (Random.Range (-7, 7), posI);
+		adriel.position = new Vector2 (Random.Range (-7, 7), posA);
 	}
 
 	public int change;
@@ -34,12 +38,12 @@ public class CowsCredits : MonoBehaviour {
 
 		igor.Translate (0, -vel * Time.deltaTime, 0);
 		if (igor.position.y < -2 -Camera.main.orthographicSize) {
-			igor.position = new Vector2 (Random.Range (-7, 7), posI);
+			igor.position = new Vector2 (Random.Range (-7, 7), posJ);
 		}
 
 		adriel.Translate (0, -vel * Time.deltaTime, 0);
 		if (adriel.position.y < -2 -Camera.main.orthographicSize) {
-			adriel.position = new Vector2 (Random.Range (-7, 7), posA);
+			adriel.position = new Vector2 (Random.Range (-7, 7), posJ);
 		}
 	}
 
