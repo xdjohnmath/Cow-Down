@@ -4,32 +4,33 @@ using System.Collections;
 
 public class Candy : MonoBehaviour {
 
-	public float		vel;
-	public int    		candy;
-	public float  		positionx;
-	public float  		positiony;
-	private float		height;
+	public float			vel;
+	public int    			candy;
+	public float  			positionx;
+	public float  			positiony;
+	private float			height;
 
-	public static int 	chgLvl;
+	public static int 		chgLvl;
 
-	public static bool  noSugar = false;
+	public static bool  	noSugar = false;
 
-	public GameObject 	yellowPower;
-	public GameObject 	greenPower;
-	public GameObject	redPower;
+	public GameObject 		yellowPower;
+	public GameObject 		greenPower;
+	public GameObject		redPower;
 
 	private AudioSource [] 	powers = new AudioSource[3];
 	public  AudioSource		yellowSound, greenSound, redSound;
 
+	private Animator		anim;
 
 	void Start (){
-		height = GetComponent<SpriteRenderer> ().bounds.size.y;
-
+		height = GetComponent <SpriteRenderer> ().bounds.size.y;
+		anim   = GetComponent <Animator> ();
+			
 		powers 		= GetComponents <AudioSource> ();
 		yellowSound = powers [0];
 		greenSound	= powers [1];
 		redSound	= powers [2];
-
 	}
 
 	void Update(){
@@ -60,7 +61,8 @@ public class Candy : MonoBehaviour {
 		}else{
 			noSugar = false;
 		}
-			
+
+
 	}
 
 	IEnumerator NoSugar(){
@@ -128,6 +130,16 @@ public class Candy : MonoBehaviour {
 				vel = 0;
 			}	
 		}
+
+		if(other.CompareTag ("Confete")){
+			anim.SetBool ("onFloor", true);
+			StartCoroutine (OnFloor ());
+		}
+	}
+
+	IEnumerator OnFloor () {
+		yield return new WaitForSeconds(1f);
+		anim.SetBool ("onFloor", false);
 	}
 
 	//Fases

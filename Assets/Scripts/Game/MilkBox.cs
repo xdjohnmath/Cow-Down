@@ -19,8 +19,11 @@ public class MilkBox : MonoBehaviour {
 
 	public static bool 	colAnim;
 
+	private Animator	anim;
+
 	void Start () {
 		height = GetComponent<SpriteRenderer> ().bounds.size.y;
+		anim   = GetComponent <Animator> ();
 	}
 	
 	void Update () {
@@ -39,6 +42,15 @@ public class MilkBox : MonoBehaviour {
 			colision = true;
 		}
 
+		if(other.CompareTag ("Confete")){
+			anim.SetBool ("onFloor", true);
+			StartCoroutine (OnFloor ());
+		}
+	}
+
+	IEnumerator OnFloor () {
+		yield return new WaitForSeconds(1f);
+		anim.SetBool ("onFloor", false);
 	}
 
 	void Level1 () {

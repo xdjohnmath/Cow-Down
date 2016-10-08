@@ -33,17 +33,17 @@ public class CowsCredits : MonoBehaviour {
 	void CreditsCows() {
 		joao.Translate (0, -vel * Time.deltaTime, 0);
 		if (joao.position.y < -2 -Camera.main.orthographicSize) {
-			joao.position = new Vector2 (Random.Range (-7, 7), posJ);
+			joao.position = new Vector2 (Random.Range (-7, 7), posI);
 		}
 
 		igor.Translate (0, -vel * Time.deltaTime, 0);
 		if (igor.position.y < -2 -Camera.main.orthographicSize) {
-			igor.position = new Vector2 (Random.Range (-7, 7), posJ);
+			igor.position = new Vector2 (Random.Range (-7, 7), posI);
 		}
 
 		adriel.Translate (0, -vel * Time.deltaTime, 0);
 		if (adriel.position.y < -2 -Camera.main.orthographicSize) {
-			adriel.position = new Vector2 (Random.Range (-7, 7), posJ);
+			adriel.position = new Vector2 (Random.Range (-7, 7), posI);
 		}
 	}
 
