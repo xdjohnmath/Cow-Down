@@ -16,6 +16,9 @@ public class StartMenu : MonoBehaviour {
 
 	public 	bool 		isMuted = false;
 
+	public GameObject	soundOn;
+	public GameObject	soundOff;
+
 	void Start () {
 		anim	= GetComponent	<Animator> ();
 
@@ -32,10 +35,13 @@ public class StartMenu : MonoBehaviour {
 				
 		if (isMuted) {
 			AudioListener.volume = 0.0f;
+			soundOn.SetActive (false);
+			soundOff.SetActive (true);
 		} else {
 			AudioListener.volume = 1.0f;
+			soundOn.SetActive (true);
+			soundOff.SetActive (false);
 		}
-
 	}
 
 	IEnumerator ChangeAnim(){

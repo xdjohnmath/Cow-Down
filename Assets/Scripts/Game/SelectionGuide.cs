@@ -181,6 +181,8 @@ public class SelectionGuide : MonoBehaviour {
 
 		Candy.noSugar 	= true;
 
+		GameController.checkLose = false;
+
 		SceneManager.LoadScene ("Jogo");
 
 	}

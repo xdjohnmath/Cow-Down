@@ -21,6 +21,9 @@ public class Function : MonoBehaviour {
 	public GameObject 	left;
 	public GameObject 	right;
 
+	public GameObject	soundOn;
+	public GameObject	soundOff;
+
 	void Start (){
 		paused 		= false;
 		removePanel = false;
@@ -37,8 +40,12 @@ public class Function : MonoBehaviour {
 
 		if (isMuted) {
 			AudioListener.volume = 0.0f;
+			soundOn.SetActive (false);
+			soundOff.SetActive (true);
 		} else {
 			AudioListener.volume = 1.0f;
+			soundOn.SetActive (true);
+			soundOff.SetActive (false);
 		}
 	}
 
