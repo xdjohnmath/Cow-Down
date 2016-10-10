@@ -74,16 +74,18 @@ public class SelectionGuide : MonoBehaviour {
 	}
 
 	private void Victory () {
-		if (GameController.milkBox > 0){
-			win.SetActive 	(true);
-			lose.SetActive (false);
-			Countdown.stopSing = true;
-			winSound.Play ();
-		}else {
-			win.SetActive  (false);
-			lose.SetActive 	(true);
-			Countdown.stopSing = true;
-			loseSound.Play ();
+		if (!GameController.checkLose) {								// Só executa se nãou houver colisão
+			if (GameController.milkBox > 0) {
+				win.SetActive (true);
+				lose.SetActive (false);
+				Countdown.stopSing = true;
+				winSound.Play ();
+			} else {
+				win.SetActive (false);
+				lose.SetActive (true);
+				Countdown.stopSing = true;
+				loseSound.Play ();
+			}
 		}
 	}
 

@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour {
 	public	GameObject 		lose;
 	public	AudioSource 	loseSound;
 
+	public static bool 		checkLose = false;
+
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
 		loseSound	= GetComponent	<AudioSource> ();
@@ -58,6 +60,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void HitnKill () {
+		checkLose = true;
 		lose.SetActive 	(true);
 		Countdown.stopSing = true;
 		loseSound.Play ();
