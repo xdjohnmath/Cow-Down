@@ -4,10 +4,11 @@ using System.Collections;
 public class CowsCredits : MonoBehaviour {
 
 
-	public RectTransform joao, igor, adriel;
-	public float vel;
-	private float posJ, posI, posA;
+	public 	RectTransform 	joao, igor, adriel;
+	public 	float 			vel;
+	private float 			posJ, posI, posA;
 
+	private Animator 		anim;
 
 	void Start(){
 		posJ = joao.position.y;
@@ -17,6 +18,9 @@ public class CowsCredits : MonoBehaviour {
 		joao.position   = new Vector2 (Random.Range (-7, 7), posJ);
 		igor.position   = new Vector2 (Random.Range (-7, 7), posI);
 		adriel.position = new Vector2 (Random.Range (-7, 7), posA);
+
+		anim = GetComponent <Animator> ();
+	
 	}
 
 	public int change;
@@ -27,6 +31,7 @@ public class CowsCredits : MonoBehaviour {
 		}else{
 			change = 0;
 		}
+
 	}
 
 
@@ -55,6 +60,14 @@ public class CowsCredits : MonoBehaviour {
 		joao.position   = new Vector2 (Random.Range (-7, 7), posJ);
 		igor.position   = new Vector2 (Random.Range (-7, 7), posI);
 		adriel.position = new Vector2 (Random.Range (-7, 7), posA);
+	}
+
+	public void AnimCr1 () {
+		anim.SetInteger ("creds", 1);
+	}
+
+	public void AnimCr2 () {
+		anim.SetInteger ("creds", 2);
 	}
 
 }
