@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour {
 
 	public static bool 		checkLose = false;
 
+	private bool 			dead = false;
+
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
 		loseSound	= GetComponent	<AudioSource> ();
@@ -35,9 +37,11 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		Movement ();
 		milkT.text = ("MilkBox "+milkBox);
+
 	}
 
 	void Movement (){
+		if (!dead) {
 		if (Input.GetKey (KeyCode.RightArrow) || (movementPlayer == 1)) {
 			if (transform.position.x < 8.8f) {
 				anim.SetFloat ("Turn", 1);
@@ -53,13 +57,24 @@ public class GameController : MonoBehaviour {
 				right= false;
 			}
 		} else if (movementPlayer == 0){
-			anim.SetFloat ("Turn", 0.5f);
-			right = false;
-			left = false;
+				anim.SetFloat ("Turn", 0.5f);
+				right = false;
+				left = false;
+			}
+		}
+		else {
+			velPlayer = 0;
+			anim.SetFloat ("Turn", 1.5f);
 		}
 	}
 
 	void HitnKill () {
+		dead = true;
+		StartCoroutine (PlayerDead ());
+	}
+
+	IEnumerator PlayerDead () {
+		yield return new WaitForSeconds (1.5f);
 		checkLose = true;
 		lose.SetActive 	(true);
 		Countdown.stopSing = true;
@@ -72,7 +87,6 @@ public class GameController : MonoBehaviour {
 		Cows.sleepCow 	= true;
 
 		SelectionGuide.activeSound = false;
-	
 	}
 
 	public void Right (){
