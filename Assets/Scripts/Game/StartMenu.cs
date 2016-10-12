@@ -13,6 +13,7 @@ public class StartMenu : MonoBehaviour {
 	public 	static int 	animRoll;
 
 	public 	AudioSource	audioSourceMenu;
+	public  AudioSource	cow;
 
 	public 	bool 		isMuted = false;
 
@@ -109,5 +110,7 @@ public class StartMenu : MonoBehaviour {
 		isMuted = !isMuted;
 	}
 
-
+	public void Cow (){
+		cow.Play ();
+	}
 }

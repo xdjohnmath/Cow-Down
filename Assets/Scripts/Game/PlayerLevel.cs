@@ -22,6 +22,7 @@ public class PlayerLevel : MonoBehaviour {
 			button.GetComponent<Image> ().sprite = disable;
 			number.SetActive (false);
 		}
+
 	}
 
 

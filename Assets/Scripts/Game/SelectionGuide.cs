@@ -59,7 +59,7 @@ public class SelectionGuide : MonoBehaviour {
 		if (timeI % 10 == 0 && activeSound == true) {
 			cow1.Play ();
 		}
-
+			
 		if (!panel.activeSelf) {
 			GameObject.Find ("Sound").GetComponent<AudioSource> ().volume = 0.0f;
 		} else {

@@ -1,25 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MilkBox : MonoBehaviour {
 
-	public  float 		vel;
-	private float 		height;
-
-	private float 		positionx;
-	private float 		positiony;
-
-	public int    		milkSet = 0;
-	public static float milkBoxTime;
-	public int 			timeInt;
-
-	public static int 	chgLvl;
-
-	public bool 		colision;
-
-	public static bool 	colAnim;
-
-	private Animator	anim;
+	public  float 			vel;
+	private float 			height;
+	private float 			positionx;
+	private float 			positiony;
+	public 	int    			milkSet = 0;
+	public 	static float 	milkBoxTime;
+	public 	int 			timeInt;
+	public 	Text 			milkTxt;
+	public 	static int 		chgLvl;
+	public 	bool 			colision;
+	public 	static bool 	colAnim;
+	private Animator		anim;
 
 	void Start () {
 		height = GetComponent<SpriteRenderer> ().bounds.size.y;
@@ -31,7 +27,8 @@ public class MilkBox : MonoBehaviour {
 	//	Level1 ();
 
 		milkBoxTime += Time.deltaTime;
-		timeInt = (int) milkBoxTime ; 
+		timeInt = (int) milkBoxTime ;
+		milkTxt.text = ("MILKTXT " + timeInt);
 
 	}
 
@@ -55,7 +52,7 @@ public class MilkBox : MonoBehaviour {
 
 	void Level1 () {
 		
-		if (timeInt == 8){									// Primeiro Objeto
+		if (timeInt == 9){									// Primeiro Objeto
 			milkSet = 	1;
 		}
 		if (timeInt == 20){									// Segundo Objeto

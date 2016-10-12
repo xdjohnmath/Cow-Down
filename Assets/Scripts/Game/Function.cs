@@ -24,6 +24,8 @@ public class Function : MonoBehaviour {
 	public GameObject	soundOn;
 	public GameObject	soundOff;
 
+	public GameObject 	controles;
+
 	void Start (){
 		paused 		= false;
 		removePanel = false;
@@ -47,6 +49,17 @@ public class Function : MonoBehaviour {
 			soundOn.SetActive (true);
 			soundOff.SetActive (false);
 		}
+
+	}
+
+	public void PlayInstructions (){
+		StartCoroutine (Instruction ());
+	}
+
+	IEnumerator Instruction () {
+		controles.SetActive (true);
+		yield return new WaitForSeconds (6f);
+		controles.SetActive (false);
 	}
 
 	void Timer (){

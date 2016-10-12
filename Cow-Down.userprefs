@@ -1,19 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Animations\CowsCredits.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\PlayerLevel.cs">
     <Files>
-      <File FileName="Assets\Scripts\Game\Cows.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Elements\MilkHUD.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\StartMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\MilkColision.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Animations\CowsCredits.cs" Line="70" Column="30" />
-      <File FileName="Assets\Scripts\Game\MenuSound.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Candy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\MilkBox.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\SelectionGuide.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Function.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\PlayerLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerLevel.cs" Line="28" Column="34" />
+      <File FileName="Assets\Scripts\Game\Function.cs" Line="54" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
