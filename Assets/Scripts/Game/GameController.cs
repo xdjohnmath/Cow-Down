@@ -69,12 +69,14 @@ public class GameController : MonoBehaviour {
 	}
 
 	void HitnKill () {
-		dead = true;
+		dead  = true;
+		right = false;
+		left  = false;
 		StartCoroutine (PlayerDead ());
 	}
 
 	IEnumerator PlayerDead () {
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1f);
 		checkLose = true;
 		lose.SetActive 	(true);
 		Countdown.stopSing = true;

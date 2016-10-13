@@ -70,6 +70,14 @@ public class SelectionGuide : MonoBehaviour {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
 	
+		if (PlayerPrefs.GetInt ("levelPlayer")==  11){
+			VacaLoucaFunction ();
+		}
+
+	}
+
+	public void VacaLoucaFunction (){
+		VacaLouca.vacaLoucaActive = true;
 
 	}
 

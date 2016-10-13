@@ -28,7 +28,7 @@ public class ConfeteCow : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
-		if (other.tag == "Confete") {
+		if (other.tag == "Confete" || other.tag == "Player") {
 			change = 1;
 
 		}
