@@ -90,6 +90,7 @@ public class Function : MonoBehaviour {
 	}
 
 	public void GameToMenu () {
+		Cows.chgLvl = 0;
 		Time.timeScale = 1;
 		timeF = 0;
 		AudioListener.pause = false;

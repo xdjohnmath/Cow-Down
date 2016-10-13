@@ -58,8 +58,6 @@ public class Cows : MonoBehaviour {
 
 	}
 
-
-
 	//Falling Types
 	void Falling	  (){
 		
