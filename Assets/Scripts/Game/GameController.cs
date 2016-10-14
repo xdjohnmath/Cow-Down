@@ -31,8 +31,11 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
 		loseSound	= GetComponent	<AudioSource> ();
-	}
+		if (!dead) {
+			velPlayer	= 7;
+		}
 
+	}
 
 	void Update () {
 		Movement ();

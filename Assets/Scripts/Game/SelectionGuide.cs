@@ -70,14 +70,9 @@ public class SelectionGuide : MonoBehaviour {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
 	
-		if (PlayerPrefs.GetInt ("levelPlayer")==  11){
-			VacaLoucaFunction ();
+		if (PlayerPrefs.GetInt ("levelPlayer") ==  11){
+			//VACALOUCA!
 		}
-
-	}
-
-	public void VacaLoucaFunction (){
-		VacaLouca.vacaLoucaActive = true;
 
 	}
 
@@ -194,8 +189,7 @@ public class SelectionGuide : MonoBehaviour {
 		SceneManager.LoadScene ("Jogo");
 
 	}
-
-																									  // LEVELS //
+	// LEVELS //
 
 																										// LEVEL1
 	public void Level1 (){
@@ -558,7 +552,6 @@ public class SelectionGuide : MonoBehaviour {
 		activeSound = false;
 
 	}
-
 
 }
 

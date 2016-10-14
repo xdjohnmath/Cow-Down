@@ -27,6 +27,13 @@ public class Cows : MonoBehaviour {
 
 	public 	float 		timeToSound;
 
+	public	bool		vacaLouca = false;
+	public 	float 		vacaLoucaY;
+	public 	int 		type;
+	public  float 		timeVLfloat;
+	public  int 		timeVLInt;
+	public  int 		timeVLreturn;
+
 	private CircleCollider2D col;
 
 	void Start () {
@@ -34,6 +41,13 @@ public class Cows : MonoBehaviour {
 		transform.position = new Vector2 (positionx, positiony);
 
 		col 	= GetComponent <CircleCollider2D> ();             // Para desativar a colisão das vacas x confete
+	
+		if (vacaLouca == true) {  								//Para ativar a posição Randomica no ínicio do infinity
+			transform.position = new Vector2 (Random.Range (-8, 8), vacaLoucaY);
+		
+			type = 1;
+		}
+	
 	}
 
 	void Update () {
@@ -42,11 +56,24 @@ public class Cows : MonoBehaviour {
 		if (redCandy == true) {
 			cowVel = 2;
 		}
-		if (sleepCow == true){
+		if (sleepCow == true) {
 			contCow = 0;
-		}
-		else {
+		} else {
 			sleepCow = false;
+		}
+
+		if (vacaLouca) {      //aumenta a velocidade VacaLouca
+			timeVLfloat += Time.deltaTime;
+			timeVLInt = (int)timeVLfloat;
+
+			if (timeVLInt % 10 == 0 && timeVLInt != 0 && timeVLreturn == 0) {
+				cowVel--;
+				timeVLreturn = 1;
+			}
+
+			if (timeVLInt % 11 == 0) {
+				timeVLreturn = 0;
+			}
 		}
 	}
 
@@ -59,12 +86,33 @@ public class Cows : MonoBehaviour {
 	}
 
 	//Falling Types
+	void FallingTypes () {
+
+		switch (type){
+		case 1:
+			Falling ();
+			break;
+		case 2:
+			FallingRight ();
+			break;
+		case 3:
+			FallingLeft ();
+			break;
+		}
+
+	}
+
 	void Falling	  (){
 		
 		transform.Translate (0, -cowVel * Time.deltaTime, 0);
 		if (transform.position.y + height < -Camera.main.orthographicSize) {
-			Position ();
-			contCow++;  //para controlar quantos objetos caíram.
+			if (!vacaLouca) { // se não foi o infinity
+				Position ();
+				contCow++;  //para controlar quantos objetos caíram.
+			} else{			
+				RandomPosition ();
+				contCow++;
+			}
 		}
 	
 	}
@@ -73,18 +121,26 @@ public class Cows : MonoBehaviour {
 
 		transform.Translate (cowVel/4*Time.deltaTime, -cowVel * Time.deltaTime, 0);
 		if (transform.position.y + height < -Camera.main.orthographicSize) {
-			Position ();
-			contCow++;  //para controlar quantos objetos caíram.
+			if (!vacaLouca) { 
+				Position ();
+				contCow++;  //para controlar quantos objetos caíram.
+			} else {
+				RandomPosition ();
+				contCow++;
+			}
 		}
-
 	}
 
 	void FallingLeft  (){
 		transform.Translate (-cowVel/4*Time.deltaTime, -cowVel * Time.deltaTime, 0);
 		if (transform.position.y + height < -Camera.main.orthographicSize) {
-			Position ();
-
-			contCow++;  //para controlar quantos objetos caíram.
+			if (!vacaLouca) { 
+				Position ();
+				contCow++;  //para controlar quantos objetos caíram.
+			} else {
+				RandomPosition ();
+				contCow++;
+			}
 		}
 
 	}
@@ -135,6 +191,11 @@ public class Cows : MonoBehaviour {
 		if (fallType == 10) {													// Reinicia o eixo Y | escala decrescente 
 			transform.position = new Vector2 (positionx, positiony/round);
 		}
+	}
+
+	void RandomPosition () {
+		type = (Random.Range (1, 3));
+		transform.position = new Vector2 (Random.Range (-8, 8), vacaLoucaY);
 	}
 
 	//Funções das posiçõe de reuso
@@ -974,6 +1035,11 @@ public class Cows : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void LevelInfinity () {
+		vacaLouca = true;
+		chgLvl = 0;
 	}
 
 	void ChangeLevel (){

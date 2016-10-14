@@ -68,7 +68,7 @@
      <Compile Include="Assets\Scripts\Game\SoundMenu.cs" />
      <Compile Include="Assets\Scripts\Game\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Game\Tutorial.cs" />
-     <Compile Include="Assets\Scripts\VacaLouca.cs" />
+     <Compile Include="Assets\Scripts\VacaLouca\VacaLouca.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

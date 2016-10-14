@@ -2,17 +2,12 @@
 using System.Collections;
 
 public class VacaLouca : MonoBehaviour {
-	public float vcVel;
-	public float vcX;
-	public float vcY;
-
-	private float height;
-
-	public  static bool vacaLoucaActive = true;
-
-	public int type;
-
-	private CircleCollider2D col;
+	public 	float 				vcVel;
+	public 	float 				vcX;
+	public 	float 				vcY;
+	public 	int 				type;
+	private float 				height;
+	private CircleCollider2D 	col;
 
 	public float timeVcF;
 	public int	 timeVcI;
@@ -30,9 +25,7 @@ public class VacaLouca : MonoBehaviour {
 	}
 
 	void Update () {
-		if (vacaLoucaActive){
-			GetComponent<Cows> ().enabled = false;
-		}
+		
 		FallingTypes ();
 
 		timeVcF += Time.deltaTime;
@@ -48,8 +41,6 @@ public class VacaLouca : MonoBehaviour {
 		}
 			
 	}
-
-
 
 	// Tipos de queda
 
