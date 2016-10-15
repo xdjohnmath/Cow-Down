@@ -106,6 +106,6 @@ public class Function : MonoBehaviour {
 		
 	public void Sound () {
 		isMuted = !isMuted;
-
+		}
 	}
-}
+

@@ -28,6 +28,7 @@ public class Cows : MonoBehaviour {
 	public 	float 		timeToSound;
 
 	public	bool		vacaLouca = false;
+	public 	static bool	vacaLoucaStatic = false;
 	public 	float 		vacaLoucaY;
 	public 	int 		type;
 	public  float 		timeVLfloat;
@@ -42,16 +43,17 @@ public class Cows : MonoBehaviour {
 
 		col 	= GetComponent <CircleCollider2D> ();             // Para desativar a colisão das vacas x confete
 	
-		if (vacaLouca == true) {  								//Para ativar a posição Randomica no ínicio do infinity
-			transform.position = new Vector2 (Random.Range (-8, 8), vacaLoucaY);
-		
-			type = 1;
+		if (vacaLouca) {
+			vacaLoucaStatic = true;
+		} else {
+			vacaLoucaStatic = false;
 		}
 	
 	}
 
 	void Update () {
-		ChangeLevel ();
+		ChangeLevel  ();
+		FallingTypes (); 
 
 		if (redCandy == true) {
 			cowVel = 2;
@@ -62,15 +64,14 @@ public class Cows : MonoBehaviour {
 			sleepCow = false;
 		}
 
-		if (vacaLouca) {      //aumenta a velocidade VacaLouca
-			timeVLfloat += Time.deltaTime;
-			timeVLInt = (int)timeVLfloat;
+		timeVLfloat += Time.deltaTime;
+		timeVLInt = (int)timeVLfloat;
 
+		if (vacaLouca) {
 			if (timeVLInt % 10 == 0 && timeVLInt != 0 && timeVLreturn == 0) {
-				cowVel--;
+				cowVel++;
 				timeVLreturn = 1;
 			}
-
 			if (timeVLInt % 11 == 0) {
 				timeVLreturn = 0;
 			}
@@ -109,7 +110,7 @@ public class Cows : MonoBehaviour {
 			if (!vacaLouca) { // se não foi o infinity
 				Position ();
 				contCow++;  //para controlar quantos objetos caíram.
-			} else{			
+			} else{															//INFINITY
 				RandomPosition ();
 				contCow++;
 			}
@@ -195,8 +196,9 @@ public class Cows : MonoBehaviour {
 
 	void RandomPosition () {
 		type = (Random.Range (1, 3));
+		col.enabled = true;
 		transform.position = new Vector2 (Random.Range (-8, 8), vacaLoucaY);
-	}
+	}				
 
 	//Funções das posiçõe de reuso
 	void Rate1() {
@@ -1039,9 +1041,18 @@ public class Cows : MonoBehaviour {
 
 	void LevelInfinity () {
 		vacaLouca = true;
-		chgLvl = 0;
+		chgLvl = 11;
+	
 	}
 
+	public void InfinityStart() {
+		vacaLouca = true;
+		type = (Random.Range (1, 3));
+		transform.position = new Vector2 (Random.Range (-8, 8), vacaLoucaY);
+		cowVel = 2;
+		timeVLfloat = 0;
+	}
+		
 	void ChangeLevel (){
 		
 		if (chgLvl == 1){
@@ -1073,6 +1084,12 @@ public class Cows : MonoBehaviour {
 		}
 		if (chgLvl == 10){
 			Level10 ();
+		}
+		if (chgLvl == 11) {
+			LevelInfinity ();		
+		}
+		if (chgLvl == 20){												//randomPositionVACALOUCA
+			InfinityStart();
 		}
 
 	}

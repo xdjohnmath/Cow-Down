@@ -311,6 +311,24 @@ public class Candy : MonoBehaviour {
 		}
 	}
 
+	void LevelInfinity (){
+		positiony = 8;
+		if (Function.timeI == 0){
+			transform.position = new Vector2 (Random.Range(-8, 8), 8);
+			vel = 0;
+		}
+		int random;
+
+		if (Function.timeI % 15 == 0 && Function.timeI != 0) {
+			vel = 5.5f;
+			random = Random.Range (1, 3);
+			candy = random;
+			transform.position = new Vector2 (Random.Range(-8, 8), 8);
+		}
+
+
+	}
+
 	void ChangeLevel (){
 
 		if (chgLvl == 1){
@@ -342,6 +360,9 @@ public class Candy : MonoBehaviour {
 		}
 		if (chgLvl == 10){
 			Level10 ();
+		}
+		if (chgLvl == 11){
+			LevelInfinity ();
 		}
 
 	}

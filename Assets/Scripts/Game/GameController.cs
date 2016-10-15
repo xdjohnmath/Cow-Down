@@ -24,9 +24,12 @@ public class GameController : MonoBehaviour {
 	public	GameObject 		lose;
 	public	AudioSource 	loseSound;
 
-	public static bool 		checkLose = false;
+	public static  bool		checkLose = false;
 
 	private bool 			dead = false;
+	public 	static bool 	VLPlayer = false;
+	public 	GameObject 		deadVL;
+
 
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
@@ -75,13 +78,35 @@ public class GameController : MonoBehaviour {
 		dead  = true;
 		right = false;
 		left  = false;
-		StartCoroutine (PlayerDead ());
+		if (!VLPlayer) {
+			StartCoroutine (PlayerDead ());
+		}else {
+			StartCoroutine (PlayerDeadVL ());
+		}
 	}
 
 	IEnumerator PlayerDead () {
+
 		yield return new WaitForSeconds (1f);
 		checkLose = true;
-		lose.SetActive 	(true);
+		lose.SetActive (true);
+		Countdown.stopSing = true;
+		loseSound.Play ();
+
+		Cows.chgLvl = 0;
+		Candy.chgLvl = 0;
+		MilkBox.chgLvl = 0;
+
+		Cows.sleepCow = true;
+
+		SelectionGuide.activeSound = false;
+	} 
+
+	IEnumerator PlayerDeadVL () {
+
+		yield return new WaitForSeconds (1f);
+		checkLose = true;
+		deadVL.SetActive 	(true);
 		Countdown.stopSing = true;
 		loseSound.Play ();
 
@@ -92,7 +117,10 @@ public class GameController : MonoBehaviour {
 		Cows.sleepCow 	= true;
 
 		SelectionGuide.activeSound = false;
+
 	}
+
+
 
 	public void Right (){
 		movementPlayer = 1;

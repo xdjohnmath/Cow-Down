@@ -27,18 +27,31 @@ public class SelectionGuide : MonoBehaviour {
 
 	private float 			timeF;
 	private int   			timeI;
+	public  Text 			timeT;
+	public  int 			highscore;
 
-	public static bool  	activeSound  = false;
+	public  Text			timeString;
+	public  Text 			highscoreString;
+
+	public  GameObject 		milkHUD;
+	public  GameObject 		score;
+
+	public 	static bool  	activeSound  = false;
+
+	public 	Button 			vacaLouca;
+	private bool 			checkVL = false;
+
 
 	void Start (){
 		checkVictory = GetComponents <AudioSource> ();
-		winSound 	 = checkVictory [0];
-		loseSound 	 = checkVictory [1];
-		cow1 		 = checkVictory [2];
+		winSound = checkVictory [0];
+		loseSound = checkVictory [1];
+		cow1 = checkVictory [2];
 
-		if (PlayerPrefs.GetInt ("confgPrefs") != 1){
+		if (PlayerPrefs.GetInt ("confgPrefs") != 1) {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
+
 
 	}
 
@@ -46,7 +59,7 @@ public class SelectionGuide : MonoBehaviour {
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 		levelPause.text = ("Level " + level);
-		levelWin.text 	= ("Level " + level);
+		levelWin.text = ("Level " + level);
 
 		// Mostra o nível do player
 		pref = PlayerPrefs.GetInt ("levelPlayer");
@@ -55,6 +68,9 @@ public class SelectionGuide : MonoBehaviour {
 		timeF += Time.deltaTime;
 		timeI = (int)timeF;
 
+		if (checkVL) {
+			timeT.text = (timeI.ToString ());                    //tempoatual
+		}
 		// Mugido das vaquinhas
 		if (timeI % 10 == 0 && activeSound == true) {
 			cow1.Play ();
@@ -66,15 +82,19 @@ public class SelectionGuide : MonoBehaviour {
 			GameObject.Find ("Sound").GetComponent<AudioSource> ().volume = 1.0f;
 		}
 
-		if (PlayerPrefs.GetInt ("confgPrefs") != 1){
+		if (PlayerPrefs.GetInt ("confgPrefs") != 1) {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
-	
-		if (PlayerPrefs.GetInt ("levelPlayer") ==  11){
-			//VACALOUCA!
-		}
 
+		if (timeI >highscore) {
+			PlayerPrefs.SetInt ("Highscore", timeI);
+		} else{
+			PlayerPrefs.SetInt ("Highscore", highscore);
+		}
+		timeString.text = ("Score \n" + timeI);
+		highscoreString.text = ("Highscore\n " + highscore);
 	}
+		
 
 	private void Victory () {
 		if (!GameController.checkLose) {								// Só executa se nãou houver colisão
@@ -123,6 +143,10 @@ public class SelectionGuide : MonoBehaviour {
 		}
 		if (level == 10){
 			Level10 ();
+		}
+
+		if (level == 11){
+			Infinity ();
 		}
 	}
 		
@@ -551,6 +575,31 @@ public class SelectionGuide : MonoBehaviour {
 
 		activeSound = false;
 
+	}
+
+	public void Infinity(){
+		StartCoroutine (RoutineIninity ());
+	}
+
+	public IEnumerator RoutineIninity (){
+		panel.SetActive (false);
+		Cows.chgLvl = 20;
+		score.SetActive (true);
+		milkHUD.SetActive (false);
+		GameController.VLPlayer = true;
+		yield return new WaitForSeconds (timeToStart);
+		timeF = 0;
+		checkVL = true;
+		Cows.chgLvl 		= 11;
+		Candy.chgLvl 		= 11;
+		MilkBox.chgLvl 		= 00;
+
+		MilkBox.milkBoxTime = 0;
+		Function.timeF 		= 0;
+
+		level = 11;
+
+		activeSound = true;
 	}
 
 }
