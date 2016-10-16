@@ -8,8 +8,14 @@ public class Tutorial : MonoBehaviour {
 
 	public GameObject panel;
 
+	public int		games;
+
 	void Start () {
 		anim = GetComponent <Animator>();
+		PlayerPrefs.SetInt ("Games", games);
+
+		games++;
+
 	}
 
 	public void Tutorial1() {
@@ -25,8 +31,16 @@ public class Tutorial : MonoBehaviour {
 		anim.SetInteger ("Transition",4);
 	}
 	public void Tutorial5() {
-		panel.SetActive (true);
+		if (games > 1){
+			panel.SetActive (true);
+		}
 	}
+	public void Tutorial6() {
+		if (games <= 1){
+			panel.SetActive (true);
+		}
+	}
+
 
 	public void Game () {
 		SceneManager.LoadScene ("Jogo");

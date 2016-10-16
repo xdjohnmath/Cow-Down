@@ -45,7 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AnimButton.cs" />
+     <Compile Include="Assets\Scripts\Animations\AnimButton.cs" />
      <Compile Include="Assets\Scripts\Animations\CowsCredits.cs" />
      <Compile Include="Assets\Scripts\Animations\PowerActive.cs" />
      <Compile Include="Assets\Scripts\Animations\SelectionAnimation.cs" />

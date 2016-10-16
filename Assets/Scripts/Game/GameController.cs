@@ -30,6 +30,12 @@ public class GameController : MonoBehaviour {
 	public 	static bool 	VLPlayer = false;
 	public 	GameObject 		deadVL;
 
+	public  Text			timeString;
+	public  Text 			highscoreString;
+
+	public Text 			highscoreT;
+
+	public static bool		trueTime = false;
 
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
@@ -43,7 +49,13 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		Movement ();
 		milkT.text = ("MilkBox "+milkBox);
+		highscoreT.text = ("HGS . " + PlayerPrefs.GetInt ("Highscore"));
 
+		if (trueTime) {
+			if (Function.timeI >= PlayerPrefs.GetInt ("Highscore")) {
+				PlayerPrefs.SetInt ("Highscore", Function.timeI);
+			}
+		}
 	}
 
 	void Movement (){
@@ -86,7 +98,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	IEnumerator PlayerDead () {
-
 		yield return new WaitForSeconds (1f);
 		checkLose = true;
 		lose.SetActive (true);
@@ -100,10 +111,12 @@ public class GameController : MonoBehaviour {
 		Cows.sleepCow = true;
 
 		SelectionGuide.activeSound = false;
+
 	} 
 
 	IEnumerator PlayerDeadVL () {
-
+		
+		trueTime = false;
 		yield return new WaitForSeconds (1f);
 		checkLose = true;
 		deadVL.SetActive 	(true);
@@ -115,12 +128,16 @@ public class GameController : MonoBehaviour {
 		MilkBox.chgLvl 		= 0;
 
 		Cows.sleepCow 	= true;
+		Cows.cowVelstatic = true;
+
+		yellowCandy = false;
 
 		SelectionGuide.activeSound = false;
 
+
+		highscoreString.text = ("Seu Record: " + PlayerPrefs.GetInt ("Highscore"));
+		timeString.text = ("Você Fez: " + (Function.timeI-1));
 	}
-
-
 
 	public void Right (){
 		movementPlayer = 1;

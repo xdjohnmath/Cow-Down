@@ -23,15 +23,10 @@ public class SelectionGuide : MonoBehaviour {
 	public  AudioSource 	winSound;
 	public	AudioSource 	loseSound;
 	public 	AudioSource  	cow1;
-	public 	AudioSource		menu;
 
 	private float 			timeF;
 	private int   			timeI;
 	public  Text 			timeT;
-	public  int 			highscore;
-
-	public  Text			timeString;
-	public  Text 			highscoreString;
 
 	public  GameObject 		milkHUD;
 	public  GameObject 		score;
@@ -39,8 +34,8 @@ public class SelectionGuide : MonoBehaviour {
 	public 	static bool  	activeSound  = false;
 
 	public 	Button 			vacaLouca;
+	public  GameObject 		level10;
 	private bool 			checkVL = false;
-
 
 	void Start (){
 		checkVictory = GetComponents <AudioSource> ();
@@ -51,8 +46,6 @@ public class SelectionGuide : MonoBehaviour {
 		if (PlayerPrefs.GetInt ("confgPrefs") != 1) {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
-
-
 	}
 
 	void Update (){
@@ -86,23 +79,31 @@ public class SelectionGuide : MonoBehaviour {
 			PlayerPrefs.SetInt ("levelPlayer", 1);
 		}
 
-		if (timeI >highscore) {
-			PlayerPrefs.SetInt ("Highscore", timeI);
-		} else{
-			PlayerPrefs.SetInt ("Highscore", highscore);
-		}
-		timeString.text = ("Score \n" + timeI);
-		highscoreString.text = ("Highscore\n " + highscore);
 	}
-		
+
+	public void Reset () {
+		PlayerPrefs.SetInt ("levelPlayer", 11);
+		PlayerPrefs.SetInt ("Highscore", 0);
+		GameController.trueTime = false;
+	}
 
 	private void Victory () {
 		if (!GameController.checkLose) {								// Só executa se nãou houver colisão
 			if (GameController.milkBox > 0) {
-				win.SetActive (true);
-				lose.SetActive (false);
-				Countdown.stopSing = true;
-				winSound.Play ();
+				if (level != 10) {
+					win.SetActive (true);
+					lose.SetActive (false);
+					Countdown.stopSing = true;
+					winSound.Play ();
+					level10.SetActive (true);
+				}
+				else {
+					win.SetActive (true);
+					lose.SetActive (false);
+					Countdown.stopSing = true;
+					winSound.Play ();
+					level10.SetActive (false);
+				}
 			} else {
 				win.SetActive (false);
 				lose.SetActive (true);
@@ -209,6 +210,21 @@ public class SelectionGuide : MonoBehaviour {
 		Candy.noSugar 	= true;
 
 		GameController.checkLose = false;
+
+		SceneManager.LoadScene ("Jogo");
+
+	}
+
+	public void  MenuVacaLouca (){
+		Cows.sleepCow =  false;
+		win.SetActive 	(false);
+		lose.SetActive 	(false);
+
+		GameController.milkBox 	= 0;
+
+		Candy.noSugar 	= true;
+
+		GameController.trueTime = false;
 
 		SceneManager.LoadScene ("Jogo");
 
@@ -583,11 +599,20 @@ public class SelectionGuide : MonoBehaviour {
 
 	public IEnumerator RoutineIninity (){
 		panel.SetActive (false);
+
 		Cows.chgLvl = 20;
+
 		score.SetActive (true);
+
 		milkHUD.SetActive (false);
+
 		GameController.VLPlayer = true;
+		GameController.trueTime = false;
+
+		Function.timeF = 0;
 		yield return new WaitForSeconds (timeToStart);
+
+		GameController.trueTime = true;
 		timeF = 0;
 		checkVL = true;
 		Cows.chgLvl 		= 11;

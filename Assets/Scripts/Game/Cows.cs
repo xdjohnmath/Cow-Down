@@ -37,7 +37,11 @@ public class Cows : MonoBehaviour {
 
 	private CircleCollider2D col;
 
+	public 	static bool cowVelstatic;
+
 	void Start () {
+		cowVelstatic = false;
+
 		height 	= GetComponent <SpriteRenderer> ().bounds.size.y;
 		transform.position = new Vector2 (positionx, positiony);
 
@@ -75,6 +79,10 @@ public class Cows : MonoBehaviour {
 			if (timeVLInt % 11 == 0) {
 				timeVLreturn = 0;
 			}
+		}
+
+		if (cowVelstatic){
+			cowVel = 0;
 		}
 	}
 
