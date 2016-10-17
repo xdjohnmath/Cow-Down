@@ -37,6 +37,8 @@ public class SelectionGuide : MonoBehaviour {
 	public  GameObject 		level10;
 	private bool 			checkVL = false;
 
+	public 	static	int		ads;
+
 	void Start (){
 		checkVictory = GetComponents <AudioSource> ();
 		winSound = checkVictory [0];
@@ -98,17 +100,19 @@ public class SelectionGuide : MonoBehaviour {
 					level10.SetActive (true);
 				}
 				else {
-					win.SetActive (true);
+					win.SetActive (true);								// Para não mostrar o botão de NEXT para o nível 10
 					lose.SetActive (false);
 					Countdown.stopSing = true;
 					winSound.Play ();
 					level10.SetActive (false);
 				}
+				ads = 3;
 			} else {
 				win.SetActive (false);
 				lose.SetActive (true);
 				Countdown.stopSing = true;
 				loseSound.Play ();
+				ads = 1;
 			}
 		}
 	}

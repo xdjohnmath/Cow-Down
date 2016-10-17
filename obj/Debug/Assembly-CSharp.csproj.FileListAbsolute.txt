@@ -82,3 +82,5 @@ C:\Users\João\Documents\Cow-Down\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\João\Documents\Cow-Down\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\João\Documents\Cow-Down\obj\Debug\Assembly-CSharp.dll
 C:\Users\João\Documents\Cow-Down\obj\Debug\Assembly-CSharp.pdb
+C:\Users\João\Documents\Cow-Down\Temp\bin\Debug\UnityEngine.Advertisements.dll
+C:\Users\João\Documents\Cow-Down\Temp\bin\Debug\UnityEngine.Advertisements.xml

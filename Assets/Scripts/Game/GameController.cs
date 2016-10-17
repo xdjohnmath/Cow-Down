@@ -87,6 +87,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void HitnKill () {
+		SelectionGuide.ads = 1;
 		dead  = true;
 		right = false;
 		left  = false;
@@ -95,6 +96,7 @@ public class GameController : MonoBehaviour {
 		}else {
 			StartCoroutine (PlayerDeadVL ());
 		}
+
 	}
 
 	IEnumerator PlayerDead () {
