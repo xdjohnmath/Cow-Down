@@ -83,7 +83,7 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
-	public void Reset () {
+	public void  Reset () {
 		PlayerPrefs.SetInt ("levelPlayer", 11);
 		PlayerPrefs.SetInt ("Highscore", 0);
 		GameController.trueTime = false;
@@ -187,6 +187,22 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
+	public void  MenuVacaLouca (){
+		Cows.sleepCow =  false;
+		win.SetActive 	(false);
+		lose.SetActive 	(false);
+		GameController.correctPanel = true;
+
+		GameController.milkBox 	= 0;
+
+		Candy.noSugar 	= true;
+
+		GameController.trueTime = false;
+
+		SceneManager.LoadScene ("Jogo");
+
+	}
+
 	public void  NextLevel (){
 		level += cont;
 		ChangeLevel ();
@@ -219,20 +235,7 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
-	public void  MenuVacaLouca (){
-		Cows.sleepCow =  false;
-		win.SetActive 	(false);
-		lose.SetActive 	(false);
 
-		GameController.milkBox 	= 0;
-
-		Candy.noSugar 	= true;
-
-		GameController.trueTime = false;
-
-		SceneManager.LoadScene ("Jogo");
-
-	}
 	// LEVELS //
 
 																										// LEVEL1
@@ -612,6 +615,7 @@ public class SelectionGuide : MonoBehaviour {
 
 		GameController.VLPlayer = true;
 		GameController.trueTime = false;
+		GameController.correctPanel = false;												// Corrige a falha que carregava o painel VL na fases normais.
 
 		Function.timeF = 0;
 		yield return new WaitForSeconds (timeToStart);

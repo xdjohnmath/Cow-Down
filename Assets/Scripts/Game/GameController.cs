@@ -37,6 +37,8 @@ public class GameController : MonoBehaviour {
 
 	public static bool		trueTime = false;
 
+	public static bool 		correctPanel = false;
+
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
 		loseSound	= GetComponent	<AudioSource> ();
@@ -56,6 +58,14 @@ public class GameController : MonoBehaviour {
 				PlayerPrefs.SetInt ("Highscore", Function.timeI);
 			}
 		}
+
+		if (correctPanel){
+			deadVL.SetActive(false);
+			VLPlayer = false;
+		}else{
+			VLPlayer = true;
+		}
+
 	}
 
 	void Movement (){

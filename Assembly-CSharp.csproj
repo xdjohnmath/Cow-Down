@@ -69,8 +69,8 @@
      <Compile Include="Assets\Scripts\Game\SoundMenu.cs" />
      <Compile Include="Assets\Scripts\Game\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Game\Tutorial.cs" />
+     <Compile Include="Assets\Scripts\Game\UnityAds.cs" />
      <Compile Include="Assets\Scripts\VacaLouca\VacaLouca.cs" />
-     <Compile Include="Assets\UnityAds.cs" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
