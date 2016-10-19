@@ -83,13 +83,14 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
-	public void  Reset () {
+	public void Reset () {
 		PlayerPrefs.SetInt ("levelPlayer", 11);
 		PlayerPrefs.SetInt ("Highscore", 0);
 		GameController.trueTime = false;
 	}
 
 	private void Victory () {
+		
 		if (!GameController.checkLose) {								// Só executa se nãou houver colisão
 			if (GameController.milkBox > 0) {
 				if (level != 10) {
@@ -118,7 +119,7 @@ public class SelectionGuide : MonoBehaviour {
 	}
 
 	private void ChangeLevel (){
-
+		
 		if (level == 1){
 			Level1 ();
 		}
@@ -187,22 +188,6 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
-	public void  MenuVacaLouca (){
-		Cows.sleepCow =  false;
-		win.SetActive 	(false);
-		lose.SetActive 	(false);
-		GameController.correctPanel = true;
-
-		GameController.milkBox 	= 0;
-
-		Candy.noSugar 	= true;
-
-		GameController.trueTime = false;
-
-		SceneManager.LoadScene ("Jogo");
-
-	}
-
 	public void  NextLevel (){
 		level += cont;
 		ChangeLevel ();
@@ -235,7 +220,24 @@ public class SelectionGuide : MonoBehaviour {
 
 	}
 
+	public void  MenuVacaLouca (){
+		Cows.sleepCow =  false;
+		win.SetActive 	(false);
+		lose.SetActive 	(false);
 
+		GameController.milkBox 	= 0;
+
+		Candy.noSugar 	= true;
+
+		GameController.trueTime = false;
+
+		GameController.VLPlayer = false;
+
+		GameController.checkLose = false;
+
+		SceneManager.LoadScene ("Jogo");
+
+	}
 	// LEVELS //
 
 																										// LEVEL1
@@ -605,6 +607,8 @@ public class SelectionGuide : MonoBehaviour {
 	}
 
 	public IEnumerator RoutineIninity (){
+		GameController.VLPlayer = true;
+
 		panel.SetActive (false);
 
 		Cows.chgLvl = 20;
@@ -613,14 +617,13 @@ public class SelectionGuide : MonoBehaviour {
 
 		milkHUD.SetActive (false);
 
-		GameController.VLPlayer = true;
 		GameController.trueTime = false;
-		GameController.correctPanel = false;												// Corrige a falha que carregava o painel VL na fases normais.
 
 		Function.timeF = 0;
 		yield return new WaitForSeconds (timeToStart);
 
 		GameController.trueTime = true;
+
 		timeF = 0;
 		checkVL = true;
 		Cows.chgLvl 		= 11;

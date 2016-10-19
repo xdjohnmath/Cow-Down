@@ -21,6 +21,7 @@ public class StartMenu : MonoBehaviour {
 	public GameObject	soundOff;
 
 	void Start () {
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		anim	= GetComponent	<Animator> ();
 
 	}

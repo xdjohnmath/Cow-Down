@@ -4,13 +4,13 @@ using UnityEngine.Advertisements;
 
 public class UnityAds : MonoBehaviour {
 	[SerializeField]
-	string gameID;
+	string gameID = "1170984";
 	public int maxValue;
 	int a;
 
 	void Awake () {
 		a = Random.Range (0, maxValue);
-		print ("----------------------------------------------------------------" + a);
+		print ("random -(" + a + ")-");
 		Advertisement.Initialize (gameID, true);
 	}
 

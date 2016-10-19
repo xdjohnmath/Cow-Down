@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Elements\MilkHUD.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\SelectionGuide.cs">
     <Files>
-      <File FileName="Assets\Scripts\Game\SelectionGuide.cs" Line="213" Column="2" />
+      <File FileName="Assets\Scripts\Game\GameController.cs" Line="124" Column="3" />
       <File FileName="Assets\Scripts\Game\Function.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Tutorial.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Elements\MilkHUD.cs" Line="33" Column="4" />
-      <File FileName="Assets\Scripts\Game\GameController.cs" Line="66" Column="20" />
+      <File FileName="Assets\Scripts\Game\Tutorial.cs" Line="14" Column="49" />
+      <File FileName="Assets\Scripts\Elements\MilkHUD.cs" Line="23" Column="1" />
+      <File FileName="Assets\Scripts\Game\SelectionGuide.cs" Line="236" Column="36" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

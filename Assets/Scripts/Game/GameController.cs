@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour {
 	public static  bool		checkLose = false;
 
 	private bool 			dead = false;
-	public 	static bool 	VLPlayer = false;
+	public 	static bool 	VLPlayer;
 	public 	GameObject 		deadVL;
 
 	public  Text			timeString;
@@ -36,8 +36,6 @@ public class GameController : MonoBehaviour {
 	public Text 			highscoreT;
 
 	public static bool		trueTime = false;
-
-	public static bool 		correctPanel = false;
 
 	void Start () {
 		anim 		= GetComponent  <Animator> ();
@@ -58,14 +56,6 @@ public class GameController : MonoBehaviour {
 				PlayerPrefs.SetInt ("Highscore", Function.timeI);
 			}
 		}
-
-		if (correctPanel){
-			deadVL.SetActive(false);
-			VLPlayer = false;
-		}else{
-			VLPlayer = true;
-		}
-
 	}
 
 	void Movement (){
@@ -110,6 +100,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	IEnumerator PlayerDead () {
+		
 		yield return new WaitForSeconds (1f);
 		checkLose = true;
 		lose.SetActive (true);
@@ -127,7 +118,7 @@ public class GameController : MonoBehaviour {
 	} 
 
 	IEnumerator PlayerDeadVL () {
-		
+
 		trueTime = false;
 		yield return new WaitForSeconds (1f);
 		checkLose = true;

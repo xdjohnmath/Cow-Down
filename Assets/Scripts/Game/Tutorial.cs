@@ -8,13 +8,13 @@ public class Tutorial : MonoBehaviour {
 
 	public GameObject panel;
 
-	public int		games;
+	public int games;
 
 	void Start () {
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		anim = GetComponent <Animator>();
-		PlayerPrefs.SetInt ("Games", games);
-
-		games++;
+		//PlayerPrefs.SetInt ("Games", games);
+		PlayerPrefs.GetInt ("Games");
 
 	}
 
@@ -31,13 +31,14 @@ public class Tutorial : MonoBehaviour {
 		anim.SetInteger ("Transition",4);
 	}
 	public void Tutorial5() {
-		if (games > 1){
+		if (PlayerPrefs.GetInt ("Games") >= 1){
 			panel.SetActive (true);
 		}
 	}
 	public void Tutorial6() {
-		if (games <= 1){
+		if (PlayerPrefs.GetInt ("Games") < 1){
 			panel.SetActive (true);
+			PlayerPrefs.SetInt ("Games", 1);
 		}
 	}
 

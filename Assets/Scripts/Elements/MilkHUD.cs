@@ -3,12 +3,14 @@ using System.Collections;
 
 public class MilkHUD : MonoBehaviour {
 
-	private 	Animator anim;
-	public int 	transition;
+	private 			Animator anim;
+	public int 			transition;
 
-	public static bool correct = false;
+
+	public static bool 	correct = false;
 
 	public		ParticleSystem newMilk;
+
 
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -31,7 +33,6 @@ public class MilkHUD : MonoBehaviour {
 		} else if (transition == 0) {
 			anim.SetInteger ("Milk", 0);
 		}
-	
 
 		if (correct == true) {
 			anim.SetInteger ("Milk", 0);
