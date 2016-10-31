@@ -35,6 +35,7 @@ public class SelectionGuide : MonoBehaviour {
 
 	public 	Button 			vacaLouca;
 	public  GameObject 		level10;
+	public  GameObject 		level10R;
 	private bool 			checkVL = false;
 
 	public 	static	int		ads;
@@ -84,7 +85,7 @@ public class SelectionGuide : MonoBehaviour {
 	}
 
 	public void Reset () {
-		PlayerPrefs.SetInt ("levelPlayer", 11);
+		PlayerPrefs.SetInt ("levelPlayer", 10);
 		PlayerPrefs.SetInt ("Highscore", 0);
 		GameController.trueTime = false;
 	}
@@ -106,6 +107,8 @@ public class SelectionGuide : MonoBehaviour {
 					Countdown.stopSing = true;
 					winSound.Play ();
 					level10.SetActive (false);
+					level10R.SetActive (false);
+
 				}
 				ads = 3;
 			} else {
@@ -242,7 +245,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL1
 	public void Level1 (){
-		
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine1 ());
 		StartCoroutine (Ending1  ());
 	}
@@ -251,6 +254,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 1;
 		Candy.chgLvl 		= 1;
@@ -279,7 +284,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL2
 	public void Level2 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine2 ());
 		StartCoroutine (Ending2  ());
 	}
@@ -288,6 +293,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 2;
 		Candy.chgLvl 		= 2;
@@ -315,7 +322,7 @@ public class SelectionGuide : MonoBehaviour {
 
 	                                                                                                   // LEVEL3
 	public void Level3 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine3 ());
 		StartCoroutine (Ending3  ());
 	}
@@ -324,6 +331,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 3;
 		Candy.chgLvl 		= 3;
@@ -351,7 +360,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL4
 	public void Level4 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine4 ());
 		StartCoroutine (Ending4  ());
 	}
@@ -360,6 +369,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 4;
 		Candy.chgLvl 		= 4;
@@ -387,7 +398,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL5
 	public void Level5 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine5 ());
 		StartCoroutine (Ending5  ());
 	}
@@ -396,6 +407,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 5;
 		Candy.chgLvl 		= 5;
@@ -423,7 +436,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL6
 	public void Level6 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine6 ());
 		StartCoroutine (Ending6  ());
 	}
@@ -432,6 +445,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 6;
 		Candy.chgLvl 		= 6;
@@ -459,7 +474,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL7
 	public void Level7 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine7 ());
 		StartCoroutine (Ending7  ());
 	}
@@ -468,6 +483,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 7;
 		Candy.chgLvl 		= 7;
@@ -495,7 +512,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL8
 	public void Level8 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine8 ());
 		StartCoroutine (Ending8  ());
 	}
@@ -504,6 +521,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 8;
 		Candy.chgLvl 		= 8;
@@ -531,7 +550,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL9
 	public void Level9 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine9 ());
 		StartCoroutine (Ending9  ());
 	}
@@ -540,6 +559,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 9;
 		Candy.chgLvl 		= 9;
@@ -567,7 +588,7 @@ public class SelectionGuide : MonoBehaviour {
 
 																										// LEVEL10
 	public void Level10 (){
-
+		MilkBox.milkTest = true;
 		StartCoroutine (Routine10 ());
 		StartCoroutine (Ending10  ());
 	}
@@ -576,6 +597,8 @@ public class SelectionGuide : MonoBehaviour {
 		panel.SetActive (false);
 
 		yield return new WaitForSeconds (timeToStart);
+
+		MilkBox.milkTest = false;
 
 		Cows.chgLvl 		= 10;
 		Candy.chgLvl 		= 10;

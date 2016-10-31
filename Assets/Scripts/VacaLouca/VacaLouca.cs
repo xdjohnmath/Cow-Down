@@ -20,7 +20,7 @@ public class VacaLouca : MonoBehaviour {
 
 
 		transform.position = new Vector2 (Random.Range (-8, 8), vcY);
-
+		Candy.noSugar = true;
 		type = 1;
 	}
 

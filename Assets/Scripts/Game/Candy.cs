@@ -90,12 +90,14 @@ public class Candy : MonoBehaviour {
 				GameController.yellowCandy = false;
 	}
 
+	public static bool correctGreen = false;
+
 	public IEnumerator GreenCandy(){								// Player se move mais rápido
-		GameController.velPlayer += GameController.greenVel;
 		PowerActive.staticPower = 2;
+		correctGreen = true;
 			yield return new WaitForSeconds (5f);
-				GameController.velPlayer -= GameController.greenVel;
 				PowerActive.staticPower = 0;
+				correctGreen = false;
 	}
 
 	public IEnumerator RedCandy(){									// Vacas e caixas de Leite demoram mais para cair
@@ -321,7 +323,7 @@ public class Candy : MonoBehaviour {
 
 		if (Function.timeI % 15 == 0 && Function.timeI != 0) {
 			vel = 5.5f;
-			random = Random.Range (1, 3);
+			random = Random.Range (1, 4);
 			candy = random;
 			transform.position = new Vector2 (Random.Range(-8, 8), 8);
 		}

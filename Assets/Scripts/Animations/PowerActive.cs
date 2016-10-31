@@ -9,13 +9,17 @@ public class PowerActive : MonoBehaviour {
 
 	void Start () {
 		anim 		= GetComponent	<Animator> ();
-
+		power = 0;
 
 	}
 
 	void Update () {
 		power = staticPower;
 		Anim ();
+
+		if (Candy.noSugar){
+			power = 0;
+		}
 	}
 
 	void Anim (){

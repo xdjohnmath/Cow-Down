@@ -56,6 +56,12 @@ public class GameController : MonoBehaviour {
 				PlayerPrefs.SetInt ("Highscore", Function.timeI);
 			}
 		}
+
+		if (Candy.correctGreen){
+			velPlayer = 13;
+		}else{
+			velPlayer = 7;
+		}
 	}
 
 	void Movement (){

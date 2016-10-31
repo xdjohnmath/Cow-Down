@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Elements\MilkFloor.cs" />
      <Compile Include="Assets\Scripts\Elements\MilkHUD.cs" />
      <Compile Include="Assets\Scripts\Game\Candy.cs" />
+     <Compile Include="Assets\Scripts\Game\CorrectMilkEnding.cs" />
      <Compile Include="Assets\Scripts\Game\Cows.cs" />
      <Compile Include="Assets\Scripts\Game\Function.cs" />
      <Compile Include="Assets\Scripts\Game\GameController.cs" />

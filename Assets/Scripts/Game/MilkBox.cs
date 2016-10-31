@@ -17,6 +17,8 @@ public class MilkBox : MonoBehaviour {
 	public 	static bool 	colAnim;
 	private Animator		anim;
 
+	public static bool		milkTest = false;
+
 	void Start () {
 		height = GetComponent<SpriteRenderer> ().bounds.size.y;
 		anim   = GetComponent <Animator> ();
@@ -25,10 +27,16 @@ public class MilkBox : MonoBehaviour {
 	void Update () {
 		ChangeLevel ();
 	//	Level1 ();
+		if (milkTest) {
+			milkBoxTime = 0;
+			timeInt = 0;
+		} else {
+			milkBoxTime += Time.deltaTime;
+			timeInt = (int)milkBoxTime;
+			milkTxt.text = ("MILKTXT " + timeInt);
 
-		milkBoxTime += Time.deltaTime;
-		timeInt = (int) milkBoxTime ;
-		milkTxt.text = ("MILKTXT " + timeInt);
+		}
+
 
 	}
 
