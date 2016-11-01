@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 
 public class UnityAds : MonoBehaviour {
 	[SerializeField]
-	string gameID = "1170984";
+	string gameID;
 	public int maxValue;
 	int a;
 

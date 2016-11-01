@@ -85,7 +85,7 @@ public class SelectionGuide : MonoBehaviour {
 	}
 
 	public void Reset () {
-		PlayerPrefs.SetInt ("levelPlayer", 10);
+		PlayerPrefs.SetInt ("levelPlayer", 1);
 		PlayerPrefs.SetInt ("Highscore", 0);
 		GameController.trueTime = false;
 	}

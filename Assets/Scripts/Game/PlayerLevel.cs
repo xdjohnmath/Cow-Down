@@ -10,6 +10,8 @@ public class PlayerLevel : MonoBehaviour {
 	public 	Sprite 		disable;
 	public 	GameObject 	number;
 
+	public  GameObject  partSys;
+
 	void Start () {		
 		//PlayerPrefs.SetInt ("levelPlayer", 1);					//Scripts retirados para que o playerprefs funcione!
 
@@ -21,6 +23,12 @@ public class PlayerLevel : MonoBehaviour {
 			button.interactable = false;
 			button.GetComponent<Image> ().sprite = disable;
 			number.SetActive (false);
+		}
+
+		if (levelNumber == PlayerPrefs.GetInt ("levelPlayer")){
+			partSys.SetActive (true);
+		} else{
+			partSys.SetActive (false);
 		}
 
 	}
