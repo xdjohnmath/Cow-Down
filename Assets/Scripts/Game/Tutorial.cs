@@ -29,7 +29,7 @@ public class Tutorial : MonoBehaviour {
 		anim.SetInteger ("Transition",4);
 	}
 	public void Tutorial5() {
-		if (PlayerPrefs.GetInt ("levelPlayer") == 1){
+		if (PlayerPrefs.GetInt ("levelPlayer") <= 1){
 			panel.SetActive (true);
 		}else {
 			panel.SetActive (false);
