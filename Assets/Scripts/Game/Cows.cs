@@ -72,7 +72,7 @@ public class Cows : MonoBehaviour {
 		timeVLInt = (int)timeVLfloat;
 
 		if (vacaLouca) {
-			if (timeVLInt % 10 == 0 && timeVLInt != 0 && timeVLreturn == 0) {
+			if (timeVLInt % 10 == 0 && timeVLInt != 0 && timeVLreturn == 0 && timeVLInt % 11 != 0) {
 				cowVel++;
 				timeVLreturn = 1;
 			}

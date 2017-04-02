@@ -33,6 +33,10 @@ public class Confete : MonoBehaviour {
 
 	public void Stop() {
 		change = 0;
+
+		if (change == 1) {
+			change = 0;
+		}
 	}
 
 }
